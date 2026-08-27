@@ -28,8 +28,8 @@ There are no tests or linter in this repo.
 
 Everything lives in `game.js` as top-level functions operating on module-level `let` state (`board`, `current`, `next`, `score`, `lines`, `level`, `paused`, `gameOver`, `dropInterval`, etc.) — there are no classes or modules.
 
-- **Board model**: `board` is a `ROWS × COLS` matrix; each cell is `0` (empty) or a color index `1–7` identifying which piece locked there.
-- **Pieces**: defined in `PIECES` as square matrices of color indices. Rotation (`rotateCW`) is a transpose + row-reverse, not stored per-piece rotation states.
+- **Board model**: `board` is a `ROWS × COLS` matrix; each cell is `0` (empty) or a color index `1–8` identifying which piece locked there.
+- **Pieces**: defined in `PIECES` as square matrices of color indices. Rotation (`rotateCW`) is a transpose + row-reverse, not stored per-piece rotation states. Index `8` (`NUT_TYPE`) is the "tuerca": a 3×3 ring with a hollow center cell whose `0` is intentionally passed through by `collide`, so the nut can land over a filled block and seal an unfillable gap — that's the challenge. Its hole is drawn as a stroked circle by `drawNutHole` for the active/ghost/next piece only (locked nuts just show the real gap in the wall).
 - **Collision** (`collide`): checks board bounds and overlap with locked cells; used for movement, rotation, and ghost-piece projection.
 - **Wall kicks** (`tryRotate`): after rotating, tries horizontal offsets `[0, -1, 1, -2, 2]` before giving up on the rotation.
 - **Game loop** (`loop`): driven by `requestAnimationFrame`, accumulates elapsed time in `dropAccum` and drops the piece one row once `dropInterval` is exceeded.
