@@ -122,7 +122,16 @@ jobs:
             4. Redacta el diagnóstico en español, en Markdown, empezando EXACTAMENTE con
                esta línea como primer renglón:
                `<!-- claude-triage-v1 -->`
-               y con estas secciones:
+
+               Todo lo que escribas en el comentario debe estar en Markdown válido de
+               GitHub (GitHub Flavored Markdown) que GitHub pueda renderizar: encabezados
+               con `#`/`##`, listas con `-`, checklists con `- [ ]`, negritas con `**`,
+               código y nombres de funciones/archivos entre backticks, bloques de código
+               con triple backtick y su lenguaje, y tablas con `|` si hacen falta. No uses
+               HTML (salvo el comentario marcador de la primera línea) ni sintaxis que
+               GitHub no soporte.
+
+               Usa estas secciones:
                - **Resumen** — 2 o 3 líneas.
                - **Tipo** — bug / mejora / documentación / pregunta.
                - **Componentes afectados** — archivos y funciones concretas
